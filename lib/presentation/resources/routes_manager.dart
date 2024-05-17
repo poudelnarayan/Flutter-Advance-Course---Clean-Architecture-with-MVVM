@@ -4,6 +4,7 @@ import 'package:flutter_advance_code_clean_architecture_with_mvvm/presentation/l
 import 'package:flutter_advance_code_clean_architecture_with_mvvm/presentation/main/main_screen.dart';
 import 'package:flutter_advance_code_clean_architecture_with_mvvm/presentation/onboarding/onboarding_screen.dart';
 import 'package:flutter_advance_code_clean_architecture_with_mvvm/presentation/register/register_screen.dart';
+import 'package:flutter_advance_code_clean_architecture_with_mvvm/presentation/resources/strings_manager.dart';
 import 'package:flutter_advance_code_clean_architecture_with_mvvm/presentation/splash/splash_screen.dart';
 import 'package:flutter_advance_code_clean_architecture_with_mvvm/presentation/store_details/store_details_screen.dart';
 import 'package:go_router/go_router.dart';
@@ -62,5 +63,22 @@ class Routes {
                 const StoreDetailsScreen(),
           ),
         ],
+        errorBuilder: (context, state) => const UndefinedRoute(),
       );
+}
+
+class UndefinedRoute extends StatelessWidget {
+  const UndefinedRoute({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text(AppString.noRouteFound),
+      ),
+      body: const Center(
+        child: Text(AppString.noRouteFound),
+      ),
+    );
+  }
 }
